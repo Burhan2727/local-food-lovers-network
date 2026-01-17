@@ -1,0 +1,48 @@
+const express = require('express')
+const cors = require('cors');
+require('dotenv').config()
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const app = express()
+const port = process.env.PORT || 3000
+// middlewere........................start
+app.use(express.json())
+app.use(cors())
+// middlewere........................end
+
+// mongodb ......................start
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iiwakpk.mongodb.net/?appName=Cluster0`;
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    await client.connect();
+    const db = client.db("locale-food")
+    const foodCollection = db.collection("allFoods")
+
+    app.get("/allFoods", async(req, res)=>{
+        const result = await foodCollection.find().sort({rating: "desc"}).limit(6).toArray()
+        res.send(result)
+    })
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // await client.close();
+  }
+}
+run().catch(console.dir);
+// mongodb ......................end
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})

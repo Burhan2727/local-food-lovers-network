@@ -1,0 +1,122 @@
+[
+  {
+    "foodName": "Chicken Biryani",
+    "photo": "https://i.ibb.co/q3DSVBdw/Chicken-Biryani-Featured.jpg",
+    "restaurantName": "Star Kabab",
+    "restaurantLocation": "Dhanmondi, Dhaka",
+    "reviewerName": "Rahim Ahmed",
+    "rating": 4.5
+  },
+  {
+    "foodName": "Beef Burger",
+    "photo": "https://i.ibb.co/bgqD3q2r/Beef-Burger.jpg",
+    "restaurantName": "Takeout",
+    "restaurantLocation": "Gulshan, Dhaka",
+    "reviewerName": "Sadia Khan",
+    "rating": 4.2
+  },
+  {
+    "foodName": "Margherita Pizza",
+    "photo": "https://i.ibb.co/v4WRZL4F/Margherita-Pizza.jpg",
+    "restaurantName": "Pizza Roma",
+    "restaurantLocation": "Banani, Dhaka",
+    "reviewerName": "Fahim Hasan",
+    "rating": 4.6
+  },
+  {
+    "foodName": "Kacchi Biryani",
+    "photo": "https://i.ibb.co/xKHJHwFX/Kacchi-Biryani.jpg",
+    "restaurantName": "Sultan’s Dine",
+    "restaurantLocation": "Mirpur, Dhaka",
+    "reviewerName": "Nusrat Jahan",
+    "rating": 4.8
+  },
+  {
+    "foodName": "Chicken Shawarma",
+    "photo": "https://i.ibb.co/TGc1cZx/Chicken-Shawarma.jpg",
+    "restaurantName": "Arabian Grill",
+    "restaurantLocation": "Uttara, Dhaka",
+    "reviewerName": "Imran Hossain",
+    "rating": 4.1
+  },
+  {
+    "foodName": "Fried Rice",
+    "photo": "https://i.ibb.co/XfPNwbR4/Fried-Rice.jpg",
+    "restaurantName": "Asian Wok",
+    "restaurantLocation": "Bashundhara, Dhaka",
+    "reviewerName": "Tania Rahman",
+    "rating": 4.0
+  },
+  {
+    "foodName": "Beef Steak",
+    "photo": "https://i.ibb.co/MyS0rVR8/Beef-Steak.jpg",
+    "restaurantName": "BBQ Nation",
+    "restaurantLocation": "Gulshan 2, Dhaka",
+    "reviewerName": "Mahmudul Hasan",
+    "rating": 4.7
+  },
+  {
+    "foodName": "Chicken Momos",
+    "photo": "https://i.ibb.co/chgWQC2f/Chicken-Momos.jpg",
+    "restaurantName": "Taste of Tibet",
+    "restaurantLocation": "Banani, Dhaka",
+    "reviewerName": "Ritu Das",
+    "rating": 4.3
+  },
+  {
+    "foodName": "Pasta Alfredo",
+    "photo": "https://i.ibb.co/XhqggJ4/Pasta-Alfredo.jpg",
+    "restaurantName": "Bella Italia",
+    "restaurantLocation": "Dhanmondi, Dhaka",
+    "reviewerName": "Shuvo Roy",
+    "rating": 4.4
+  },
+  {
+    "foodName": "Grilled Chicken",
+    "photo": "https://i.ibb.co/sd8TvymT/Grilled-Chicken.jpg",
+    "restaurantName": "Nando’s",
+    "restaurantLocation": "Gulshan, Dhaka",
+    "reviewerName": "Farzana Akter",
+    "rating": 4.6
+  },
+  {
+    "foodName": "Fish Curry",
+    "photo": "https://i.ibb.co/FqmK4Dyr/Fish-Curry.jpg",
+    "restaurantName": "Bangla Bhoj",
+    "restaurantLocation": "Mohammadpur, Dhaka",
+    "reviewerName": "Kamal Uddin",
+    "rating": 4.1
+  },
+  {
+    "foodName": "Cheese Sandwich",
+    "photo": "https://i.ibb.co/LDwdd8d5/Cheese-Sandwich.jpg",
+    "restaurantName": "Cafe Rio",
+    "restaurantLocation": "Uttara, Dhaka",
+    "reviewerName": "Anika Islam",
+    "rating": 3.9
+  },
+  {
+    "foodName": "Ramen Noodles",
+    "photo": "https://i.ibb.co/F2Wh0vw/Ramen-Noodles.jpg",
+    "restaurantName": "Tokyo Bites",
+    "restaurantLocation": "Banani, Dhaka",
+    "reviewerName": "Samiul Karim",
+    "rating": 4.5
+  },
+  {
+    "foodName": "Chocolate Cake",
+    "photo": "https://i.ibb.co/JjV0szqV/Chocolate-Cake.jpg",
+    "restaurantName": "Chef’s Table",
+    "restaurantLocation": "Gulshan, Dhaka",
+    "reviewerName": "Mou Akter",
+    "rating": 4.9
+  },
+  {
+    "foodName": "Ice Cream Sundae",
+    "photo": "https://i.ibb.co/NdrtkjQR/Ice-Cream-Sundae.jpg",
+    "restaurantName": "Cream & Fudge",
+    "restaurantLocation": "Dhanmondi, Dhaka",
+    "reviewerName": "Nayeem Rahman",
+    "rating": 4.2
+  }
+]
