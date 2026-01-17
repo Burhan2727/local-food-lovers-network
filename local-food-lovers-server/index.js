@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 require('dotenv').config()
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
 const port = process.env.PORT || 3000
 // middlewere........................start
@@ -32,6 +32,18 @@ async function run() {
     })
     app.get("/allReviews", async(req, res)=>{
         const result = await foodCollection.find().sort({created_at: "desc"}).toArray()
+        res.send(result)
+    })
+    app.get("/my-reviews", async(req, res)=>{
+        const email = req.query.email
+        const query = {reviewerName: email}
+        const result = await foodCollection.find(query).toArray()
+        res.send(result)
+    })
+    app.delete("/my-reviews/:id", async(req, res)=>{
+        const id = req.params.id
+        const query = {_id: new ObjectId(id)}
+        const result = await foodCollection.deleteOne(query)
         res.send(result)
     })
     app.post("/addFoods", async(req, res)=>{
