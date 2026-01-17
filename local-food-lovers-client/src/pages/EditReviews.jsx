@@ -1,44 +1,56 @@
-import React, { use } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { toast } from "react-toastify";
+import React, { use, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
 
-const AddReviewPage = () => {
-  const { user } = use(AuthContext);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newData = {
-      foodName: e.target.foodName.value,
-      photo: e.target.foodImage.value,
-      restaurantName: e.target.resturantName.value,
-      restaurantLocation: e.target.location.value,
-      rating: Number(e.target.rating.value),
-      description: e.target.reviewText.value,
-      reviewerName: user.email,
-      created_at: new Date().toLocaleDateString("en-GB"),
-    };
-    fetch("http://localhost:3000/addFoods", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast.success("successfully added review");
-        console.log(data);
-      });
-  };
-  return (
-    <div>
-      <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
+const EditReviews = () => {
+    const {id} = useParams();
+    const [review, setReview] = useState()
+    console.log(id)
+    useEffect(()=>{
+        fetch(`http://localhost:3000/my-review/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            setReview(data)
+        })
+    }, [])
+    const { user } = use(AuthContext);
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const newData = {
+          foodName: e.target.foodName.value,
+          photo: e.target.foodImage.value,
+          restaurantName: e.target.resturantName.value,
+          restaurantLocation: e.target.location.value,
+          rating: Number(e.target.rating.value),
+          description: e.target.reviewText.value,
+          reviewerName: user.email,
+          created_at: new Date().toLocaleDateString("en-GB"),
+        };
+        fetch(`http://localhost:3000/my-review/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast.success("successfully updated review");
+            console.log(data);
+          });
+      };
+    return (
+        <div>
+            <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
         <div className="card-body p-6 relative">
-          <h2 className="text-2xl font-bold text-center mb-6">Add Reviews</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Edit Reviews</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name Field */}
             <div>
               <label className="label font-medium">Food Name</label>
               <input
+              defaultValue={review?.foodName}
                 type="text"
                 name="foodName"
                 required
@@ -50,6 +62,7 @@ const AddReviewPage = () => {
             <div>
               <label className="label font-medium">Food Image URL</label>
               <input
+              defaultValue={review?.photo}
                 type="url"
                 name="foodImage"
                 required
@@ -61,6 +74,7 @@ const AddReviewPage = () => {
             <div>
               <label className="label font-medium">Restaurant Name</label>
               <input
+              defaultValue={review?.restaurantName}
                 type="text"
                 name="resturantName"
                 required
@@ -72,6 +86,7 @@ const AddReviewPage = () => {
             <div>
               <label className="label font-medium">Location</label>
               <input
+              defaultValue={review?.restaurantLocation}
                 type="text"
                 name="location"
                 required
@@ -83,6 +98,7 @@ const AddReviewPage = () => {
             <div>
               <label className="label font-medium">Star Rating</label>
               <input
+              defaultValue={review?.rating}
                 type="text"
                 name="rating"
                 required
@@ -94,6 +110,7 @@ const AddReviewPage = () => {
             <div>
               <label className="label font-medium">Review Text</label>
               <textarea
+              defaultValue={review?.description}
                 name="reviewText"
                 required
                 rows="3"
@@ -111,8 +128,8 @@ const AddReviewPage = () => {
           </form>
         </div>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default AddReviewPage;
+export default EditReviews;

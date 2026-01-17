@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 const MyReviewsPage = () => {
   const { user } = use(AuthContext);
   const [myReviews, setmyReviews] = useState([]);
@@ -89,7 +90,7 @@ const MyReviewsPage = () => {
                 </td>
                 <td>{myReview.created_at}</td>
                 <th>
-                  <button className="btn btn-primary btn-xs">Edit</button>
+                  <Link to={`/edit-review/${myReview._id}`} className="btn btn-primary btn-xs">Edit</Link>
                 </th>
                 <th>
                   <button onClick={()=> handleDelete(myReview._id)} className="btn btn-primary btn-xs">Delete</button>

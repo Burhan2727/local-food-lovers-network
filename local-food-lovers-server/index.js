@@ -40,6 +40,22 @@ async function run() {
         const result = await foodCollection.find(query).toArray()
         res.send(result)
     })
+    app.get("/my-review/:id", async(req, res)=>{
+        const id = req.params.id
+        const query = {_id: new ObjectId(id)}
+        const result = await foodCollection.findOne(query)
+        res.send(result)
+    })
+    app.patch("/my-review/:id", async(req, res)=>{
+        const id = req.params.id
+        const query = {_id: new ObjectId(id)}
+        const updateData = req.body
+        const update = {
+            $set: updateData
+        }
+        const result = await foodCollection.updateOne(query, update)
+        res.send(result)
+    })
     app.delete("/my-reviews/:id", async(req, res)=>{
         const id = req.params.id
         const query = {_id: new ObjectId(id)}
