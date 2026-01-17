@@ -29,10 +29,13 @@ const Navbar = () => {
         console.log(error);
       });
   };
+  const handleClickLogo = ()=>{
+    navigate("/")
+  }
   return (
     <div className="navbar bg-base-100 shadow-sm md:px-15 lg:px-15">
         <div>
-            <img className="w-15 object-cover" src={logoImg} alt="" />
+            <img onClick={handleClickLogo} className="w-15 object-cover" src={logoImg} alt="" />
         </div>
       <div className="navbar-start">
         <div className="dropdown">
