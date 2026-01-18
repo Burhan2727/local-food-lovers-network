@@ -98,6 +98,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link to={"/my-favourites"}>
+                My Favourites
+              </Link>
+            </li>
+            <li>
               {user ? (
                 <button className="btn btn-primary mt-2" onClick={handleSignOutUser}>Log Out</button>
               ) : (

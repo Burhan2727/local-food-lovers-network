@@ -25,6 +25,7 @@ async function run() {
     await client.connect();
     const db = client.db("locale-food")
     const foodCollection = db.collection("allFoods")
+    const favouritesCollection = db.collection("allFoods")
 
     app.get("/allFoods", async(req, res)=>{
         const result = await foodCollection.find().sort({rating: "desc"}).limit(6).toArray()
@@ -65,6 +66,23 @@ async function run() {
     app.post("/addFoods", async(req, res)=>{
         const newFood = req.body
         const result = await foodCollection.insertOne(newFood)
+        res.send(result)
+    })
+    app.post("/my-favourites", async(req, res)=>{
+        const newFavorite = req.body
+        const result = await favouritesCollection.insertOne(newFavorite)
+        res.send(result)
+    })
+    app.get("/my-favourites", async(req, res)=>{
+        const email = req.query.email
+        const query = {reviewerName: email}
+        const result = await favouritesCollection.find(query).toArray()
+        res.send(result)
+    })
+    app.delete("/my-favourites/:id", async(req, res)=>{
+        const id = req.params.id
+        const query = {_id: new ObjectId(id)}
+        const result = await favouritesCollection.deleteOne(query)
         res.send(result)
     })
     await client.db("admin").command({ ping: 1 });

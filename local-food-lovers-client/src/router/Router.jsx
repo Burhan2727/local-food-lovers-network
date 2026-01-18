@@ -9,6 +9,7 @@ import Review from "../pages/Review";
 import AllReviews from "../pages/AllReviews";
 import PrivateRoute from "./PrivateRoute";
 import EditReviews from "../pages/EditReviews";
+import MyFavourite from "../pages/MyFavourite";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ export const router = createBrowserRouter([
         path: "/my-review",
         element: <PrivateRoute>
           <MyReviewsPage></MyReviewsPage>
+        </PrivateRoute>
+      },
+      {
+        path: "/my-favourites",
+        element: <PrivateRoute>
+          <MyFavourite></MyFavourite>
         </PrivateRoute>
       },
       {

@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
-
+import { GoHeartFill } from "react-icons/go";
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/AuthContext';
 const FoodCard = ({food}) => {
-    const {foodName, photo, rating, restaurantLocation, restaurantName, reviewerName} = food
+    const {foodName, photo, rating, restaurantLocation, restaurantName, reviewerName, _id} = food
+    const {user} = use(AuthContext)
+    const handleFavourite = ()=>{
+        const newData = {
+              foodName: foodName,
+              photo: photo,
+              restaurantName: restaurantName,
+              restaurantLocation: restaurantLocation,
+              reviewerName: user.email,
+              created_at: new Date().toLocaleDateString("en-GB"),
+            };
+            fetch("http://localhost:3000/my-favourites", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newData),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                toast.success("successfully added your Favourite");
+                console.log(data);
+              });
+          };
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <figure className="h-48 overflow-hidden">
@@ -13,7 +38,10 @@ const FoodCard = ({food}) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{foodName}</h2>
+        <div className='flex justify-between items-center'>
+            <h2 className="card-title">{foodName}</h2>
+            <button onClick={handleFavourite} className='cursor-pointer'><GoHeartFill size={20} color='red'/></button>
+        </div>
         <div className="badge text-xs badge-xs badge-secondary rounded-full">{rating}</div>
         <div className="text-xs text-secondary">{reviewerName}</div>
         <p className="line-clamp-1">
