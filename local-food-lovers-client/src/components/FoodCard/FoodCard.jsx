@@ -33,6 +33,9 @@ const FoodCard = ({food}) => {
                 navigate("/login")
             }
           };
+          const handleViewDetails = ()=>{
+            
+          }
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <figure className="h-48 overflow-hidden">
@@ -54,7 +57,7 @@ const FoodCard = ({food}) => {
         </p>
         {/* <p className="text-sm text-base-content/70">by {author}</p> */}
         <div className="card-actions justify-between items-center mt-4">
-          <Link to={"/review"} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">View Details</Link>
+          <Link to={`/food-details/${_id}`} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">View Details</Link>
           <Link to={"/all-reviews"} className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">Show All Reviews</Link>
         </div>
       </div>

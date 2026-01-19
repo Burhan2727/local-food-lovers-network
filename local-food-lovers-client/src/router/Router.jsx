@@ -5,11 +5,12 @@ import AddReviewPage from "../pages/AddReviewPage";
 import LoginPage from "../pages/LoginPage";
 import MyReviewsPage from "../pages/MyReviewsPage";
 import RegisterPage from "../pages/RegisterPage";
-import Review from "../pages/Review";
 import AllReviews from "../pages/AllReviews";
 import PrivateRoute from "./PrivateRoute";
 import EditReviews from "../pages/EditReviews";
 import MyFavourite from "../pages/MyFavourite";
+import FoodDetails from "../pages/FoodDetails";
+import About from "../pages/About";
 
 export const router = createBrowserRouter([
   {
@@ -21,14 +22,14 @@ export const router = createBrowserRouter([
         Component: Home
       },
       {
+        path: "/about",
+        element: <About></About>
+      },
+      {
         path: "/add-review",
         element: <PrivateRoute>
           <AddReviewPage></AddReviewPage>
         </PrivateRoute>
-      },
-      {
-        path: "/review",
-        element: <Review></Review>
       },
       {
         path: "all-reviews",
@@ -44,6 +45,12 @@ export const router = createBrowserRouter([
         path: "/my-favourites",
         element: <PrivateRoute>
           <MyFavourite></MyFavourite>
+        </PrivateRoute>
+      },
+      {
+        path: "/food-details/:id",
+        element: <PrivateRoute>
+          <FoodDetails></FoodDetails>
         </PrivateRoute>
       },
       {
