@@ -25,7 +25,7 @@ async function run() {
     await client.connect();
     const db = client.db("locale-food")
     const foodCollection = db.collection("allFoods")
-    const favouritesCollection = db.collection("allFoods")
+    const favouritesCollection = db.collection("favouriteFoods")
 
     app.get("/allFoods", async(req, res)=>{
         const result = await foodCollection.find().sort({rating: "desc"}).limit(6).toArray()
@@ -45,6 +45,12 @@ async function run() {
         const id = req.params.id
         const query = {_id: new ObjectId(id)}
         const result = await foodCollection.findOne(query)
+        res.send(result)
+    })
+    app.get("/search", async(req, res)=>{
+        const searchText = req.query.search;
+        // const query = {foodName: searchText}
+        const result = await foodCollection.find({foodName: {$regex : searchText, $options: "i"}}).toArray()
         res.send(result)
     })
     app.patch("/my-review/:id", async(req, res)=>{

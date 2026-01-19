@@ -1,10 +1,11 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { GoHeartFill } from "react-icons/go";
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthContext';
 const FoodCard = ({food}) => {
     const {foodName, photo, rating, restaurantLocation, restaurantName, reviewerName, _id} = food
+    const navigate = useNavigate()
     const {user} = use(AuthContext)
     const handleFavourite = ()=>{
         const newData = {
@@ -12,10 +13,11 @@ const FoodCard = ({food}) => {
               photo: photo,
               restaurantName: restaurantName,
               restaurantLocation: restaurantLocation,
-              reviewerName: user.email,
+              reviewerName: user?.email,
               created_at: new Date().toLocaleDateString("en-GB"),
             };
-            fetch("http://localhost:3000/my-favourites", {
+            if(user?.email){
+                fetch("http://localhost:3000/my-favourites", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -27,6 +29,9 @@ const FoodCard = ({food}) => {
                 toast.success("successfully added your Favourite");
                 console.log(data);
               });
+            }else{
+                navigate("/login")
+            }
           };
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
