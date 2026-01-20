@@ -20,6 +20,7 @@ const AddReviewPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${user.accessToken}`
       },
       body: JSON.stringify(newData),
     })

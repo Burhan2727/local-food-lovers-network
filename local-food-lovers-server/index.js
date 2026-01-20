@@ -98,7 +98,7 @@ async function run() {
         const result = await foodCollection.deleteOne(query)
         res.send(result)
     })
-    app.post("/addFoods", async(req, res)=>{
+    app.post("/addFoods", varifyToken ,async(req, res)=>{
         const newFood = req.body
         const result = await foodCollection.insertOne(newFood)
         res.send(result)
