@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FoodCard from "../components/FoodCard/FoodCard";
+import ShowAllFoodCard from "../components/ShowAllFoodCard/ShowAllFoodCard";
 
 const AllReviews = () => {
   const [foods, setFoods] = useState([]);
@@ -67,7 +68,7 @@ const AllReviews = () => {
       </div>
       <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
         {foods.map((food) => (
-          <FoodCard key={food._id} food={food}></FoodCard>
+          <ShowAllFoodCard key={food._id} food={food}></ShowAllFoodCard>
         ))}
       </div>
     </div>

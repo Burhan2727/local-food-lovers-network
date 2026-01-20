@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors');
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceKey.json");
 require('dotenv').config()
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
@@ -8,7 +10,28 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 // middlewere........................end
-
+// firebase admin sdk start..............
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+const varifyToken = async (req, res, next)=>{
+    const authorization = req.headers.authorization
+    if(!authorization){
+        return res.status(401).send({
+            message: "unauthorized access"
+        })
+    }
+    const token = authorization.split(" ")[1]
+    try {
+        await admin.auth().verifyIdToken(token)
+        next()
+    } catch (error) {
+        res.status(401).send({
+            message: "unauthorized access"
+        })
+    }
+}
+// firebase admin sdk end................
 // mongodb ......................start
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iiwakpk.mongodb.net/?appName=Cluster0`;
 
@@ -35,7 +58,7 @@ async function run() {
         const result = await foodCollection.find().sort({created_at: "desc"}).toArray()
         res.send(result)
     })
-    app.get("/my-reviews", async(req, res)=>{
+    app.get("/my-reviews", varifyToken ,async(req, res)=>{
         const email = req.query.email
         const query = {reviewerName: email}
         const result = await foodCollection.find(query).toArray()

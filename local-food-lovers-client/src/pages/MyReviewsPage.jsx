@@ -4,11 +4,16 @@ import Swal from "sweetalert2";
 import { Link } from "react-router";
 const MyReviewsPage = () => {
   const { user } = use(AuthContext);
+  console.log(user)
   const [myReviews, setmyReviews] = useState([]);
   console.log(myReviews);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-reviews?email=${user.email}`)
+      fetch(`http://localhost:3000/my-reviews?email=${user.email}`,{
+        headers: {
+            authorization: `Bearer ${user.accessToken}`
+        }
+      })
         .then((res) => res.json())
         .then((data) => {
           setmyReviews(data);
