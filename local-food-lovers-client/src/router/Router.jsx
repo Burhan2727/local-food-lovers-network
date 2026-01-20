@@ -11,11 +11,13 @@ import EditReviews from "../pages/EditReviews";
 import MyFavourite from "../pages/MyFavourite";
 import FoodDetails from "../pages/FoodDetails";
 import About from "../pages/About";
+import PageNotFound from "../pages/PageNotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <PageNotFound></PageNotFound>,
     children: [
       {
         index: true,

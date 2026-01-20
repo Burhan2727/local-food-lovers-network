@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import logoImg from "../assets/logo.jpg"
 const Navbar = () => {
-  const { user, signOutUser, setLoading } = use(AuthContext);
+  const { user, signOutUser, setLoading, loading } = use(AuthContext);
   console.log(user);
   const navigate = useNavigate()
   const handleLogin = ()=> {
@@ -31,6 +31,9 @@ const Navbar = () => {
   };
   const handleClickLogo = ()=>{
     navigate("/")
+  }
+  if(loading){
+    return <span className="loading loading-dots loading-xl"></span>
   }
   return (
     <div className="navbar bg-base-100 shadow-sm md:px-15 lg:px-15">

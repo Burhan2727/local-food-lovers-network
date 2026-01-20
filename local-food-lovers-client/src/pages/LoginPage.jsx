@@ -42,6 +42,11 @@ const LoginPage = () => {
   };
   return (
     <div className="flex h-screen justify-center items-center">
+      <div>
+        {
+          loading && <span className="loading loading-dots loading-xl"></span>
+        }
+      </div>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="text-5xl font-bold text-center">Login now!</h1>
         <div className="card-body">
