@@ -32,9 +32,7 @@ const Navbar = () => {
   const handleClickLogo = ()=>{
     navigate("/")
   }
-  if(loading){
-    return <span className="loading loading-dots loading-xl"></span>
-  }
+  
   return (
     <div className="navbar bg-base-100 shadow-sm md:px-15 lg:px-15">
         <div>

@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 const AddReviewPage = () => {
-  const { user } = use(AuthContext);
+  const { user , setLoading, loading} = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newData = {
@@ -28,11 +28,17 @@ const AddReviewPage = () => {
       .then((data) => {
         toast.success("successfully added review");
         console.log(data);
+        setLoading(false)
       });
   };
   return (
     <div>
-      <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
+        <div className="flex justify-center items-center">
+            {
+                loading && <span className="loading loading-dots loading-xl"></span>
+            }
+        </div>
+      <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl m-10">
         <div className="card-body p-6 relative">
           <h2 className="text-2xl font-bold text-center mb-6">Add Reviews</h2>
           <form onSubmit={handleSubmit} className="space-y-4">

@@ -21,6 +21,11 @@ const Home = () => {
   }, [])
   return (
     <div>
+      <div className="flex justify-center items-center">
+        {
+          loading && <span className="loading loading-dots loading-xl"></span>
+        }
+      </div>
       {/* hero section start */}
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
