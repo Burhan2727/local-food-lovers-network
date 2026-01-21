@@ -18,6 +18,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/about"}>About</NavLink>
       </li>
+      <li>
+        <NavLink to={"/all-reviews"}>All Reviews</NavLink>
+      </li>
     </>
   );
   const handleSignOutUser = () => {

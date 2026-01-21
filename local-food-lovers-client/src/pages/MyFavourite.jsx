@@ -68,26 +68,26 @@ const MyFavourite = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
                         <img
-                          src={myFavourite.photo}
+                          src={myFavourite?.photo}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{myFavourite.foodName}</div>
+                      <div className="font-bold">{myFavourite?.foodName}</div>
                     </div>
                   </div>
                 </td>
                 <td>
                   <span className="badge badge-ghost badge-sm">
-                    {myFavourite.restaurantName}
+                    {myFavourite?.restaurantName}
                   </span>
                   <br />
                   <span className="badge badge-ghost badge-sm">
-                    {myFavourite.restaurantLocation}
+                    {myFavourite?.restaurantLocation}
                   </span>
                 </td>
-                <td>{myFavourite.created_at && new Date(myFavourite.created_at).toLocaleDateString("en-GB")}</td>
+                <td>{myFavourite?.created_at && new Date(myFavourite.created_at).toLocaleDateString("en-GB")}</td>
                 <th>
                   <button onClick={()=> handleDelete(myFavourite._id)} className="btn btn-primary btn-xs">Delete</button>
                 </th>
