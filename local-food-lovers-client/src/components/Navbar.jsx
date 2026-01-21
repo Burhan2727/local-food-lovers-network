@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import logoImg from "../assets/logo.jpg"
 const Navbar = () => {
-  const { user, signOutUser, setLoading, loading } = use(AuthContext);
+  const { user, signOutUser, setLoading } = use(AuthContext);
   console.log(user);
   const navigate = useNavigate()
   const handleLogin = ()=> {

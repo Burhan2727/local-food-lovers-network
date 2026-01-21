@@ -8,7 +8,7 @@ const AllReviews = () => {
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false)
   useEffect(() => {
-    fetch("http://localhost:3000/allReviews", {
+    fetch("https://local-food-lovers-server-ecru.vercel.app/allReviews", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -23,7 +23,7 @@ const AllReviews = () => {
     e.preventDefault()
     const searchText = e.target.search.value;
     setSearchLoading(true)
-    fetch(`http://localhost:3000/search?search=${searchText}`)
+    fetch(`https://local-food-lovers-server-ecru.vercel.app/search?search=${searchText}`)
     .then(res => res.json())
     .then(data => {
        setFoods(data)

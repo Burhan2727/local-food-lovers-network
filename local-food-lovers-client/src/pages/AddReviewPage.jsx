@@ -14,9 +14,9 @@ const AddReviewPage = () => {
       rating: Number(e.target.rating.value),
       description: e.target.reviewText.value,
       reviewerName: user.email,
-      created_at: new Date().toLocaleDateString("en-GB"),
+      created_at: Date.now(),
     };
-    fetch("http://localhost:3000/addFoods", {
+    fetch("https://local-food-lovers-server-ecru.vercel.app/addFoods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

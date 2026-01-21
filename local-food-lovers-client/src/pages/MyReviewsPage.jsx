@@ -9,7 +9,7 @@ const MyReviewsPage = () => {
   console.log(myReviews);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-reviews?email=${user.email}`,{
+      fetch(`https://local-food-lovers-server-ecru.vercel.app/my-reviews?email=${user.email}`,{
         headers: {
             authorization: `Bearer ${user.accessToken}`
         }
@@ -31,7 +31,7 @@ const MyReviewsPage = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/my-reviews/${_id}`, {
+        fetch(`https://local-food-lovers-server-ecru.vercel.app/my-reviews/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

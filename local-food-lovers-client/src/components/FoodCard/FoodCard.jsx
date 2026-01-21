@@ -22,10 +22,10 @@ const FoodCard = ({ food }) => {
       restaurantName: restaurantName,
       restaurantLocation: restaurantLocation,
       reviewerName: user?.email,
-      created_at: new Date().toLocaleDateString("en-GB"),
+      created_at: Date.now(),
     };
     if (user?.email) {
-      fetch("http://localhost:3000/my-favourites", {
+      fetch("https://local-food-lovers-server-ecru.vercel.app/my-favourites", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

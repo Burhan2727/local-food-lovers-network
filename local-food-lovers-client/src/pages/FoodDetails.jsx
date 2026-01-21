@@ -7,7 +7,7 @@ const FoodDetails = () => {
   const [loading, setLoading] = useState(true);
   console.log(food);
   useEffect(() => {
-    fetch(`http://localhost:3000/food-details/${id}`)
+    fetch(`https://local-food-lovers-server-ecru.vercel.app/food-details/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFood(data);
@@ -45,7 +45,7 @@ const FoodDetails = () => {
                 </div>
               </div>
             <p className="font-bold">{food?.reviewerName}</p>
-            <p className="font-bold">{food?.created_at}</p>
+            <p className="font-bold">{food?.created_at && new Date(food.created_at).toLocaleDateString("en-GB")}</p>
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 {food?.description}
               </p>

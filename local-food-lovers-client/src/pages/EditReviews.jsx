@@ -8,7 +8,7 @@ const EditReviews = () => {
     const [review, setReview] = useState()
     console.log(id)
     useEffect(()=>{
-        fetch(`http://localhost:3000/my-review/${id}`)
+        fetch(`https://local-food-lovers-server-ecru.vercel.app/my-review/${id}`)
         .then(res => res.json())
         .then(data => {
             setReview(data)
@@ -27,7 +27,7 @@ const EditReviews = () => {
           reviewerName: user.email,
           created_at: new Date().toLocaleDateString("en-GB"),
         };
-        fetch(`http://localhost:3000/my-review/${id}`, {
+        fetch(`https://local-food-lovers-server-ecru.vercel.app/my-review/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

@@ -7,7 +7,7 @@ const MyFavourite = () => {
       const [myFavourites, setmyFavourites] = useState([]);
       useEffect(() => {
         if (user?.email) {
-          fetch(`http://localhost:3000/my-favourites?email=${user.email}`)
+          fetch(`https://local-food-lovers-server-ecru.vercel.app/my-favourites?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
               setmyFavourites(data);
@@ -25,7 +25,7 @@ const MyFavourite = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:3000/my-favourites/${_id}`, {
+            fetch(`https://local-food-lovers-server-ecru.vercel.app/my-favourites/${_id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())
@@ -87,7 +87,7 @@ const MyFavourite = () => {
                     {myFavourite.restaurantLocation}
                   </span>
                 </td>
-                <td>{myFavourite.created_at}</td>
+                <td>{myFavourite.created_at && new Date(myFavourite.created_at).toLocaleDateString("en-GB")}</td>
                 <th>
                   <button onClick={()=> handleDelete(myFavourite._id)} className="btn btn-primary btn-xs">Delete</button>
                 </th>

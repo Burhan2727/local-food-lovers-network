@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 
 const RegisterPage = () => {
-    const {createUser, updateProfileUser, setLoading, loading} = use(AuthContext)
+    const {createUser, updateProfileUser, setLoading} = use(AuthContext)
     const navigate = useNavigate()
     const handleSubmit = (e)=>{
         e.preventDefault()

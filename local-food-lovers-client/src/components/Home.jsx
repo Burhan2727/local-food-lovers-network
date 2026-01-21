@@ -8,7 +8,7 @@ const Home = () => {
   console.log(foods)
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    fetch("http://localhost:3000/allFoods", {
+    fetch("https://local-food-lovers-server-ecru.vercel.app/allFoods", {
       headers: {
         "Content-Type": "application/json"
       }
