@@ -1,4 +1,5 @@
-[click here to view live site](https://comfy-cactus-a27e86.netlify.app/)
+[click here to view live site client](https://comfy-cactus-a27e86.netlify.app/) <br>
+[click here to view live site Server](https://local-food-lovers-server-ecru.vercel.app/) <br>
 <b>Project Name: <P>Locale Food Lovers Network</P></b>
 -This is for those who love local food and enjoy giving reviewes.<br>
 -this project includes react, firebase, daisy ui, react icon etc packeges <br>
